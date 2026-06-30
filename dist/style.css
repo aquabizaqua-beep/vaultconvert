@@ -1,0 +1,45 @@
+:root{--bg:#0f1115;--panel:#171a21;--line:#272c37;--text:#e7e9ee;--mut:#9aa3b2;--acc:#4f8cff;--acc2:#34d399;--rad:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+header.site{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(15,17,21,.85);backdrop-filter:blur(8px);z-index:10}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700;font-size:20px;color:var(--text)}
+.logo span{color:var(--acc)}
+.nav a{color:var(--mut);margin-left:18px;font-size:14px}
+h1{font-size:30px;line-height:1.25;margin:28px 0 6px}
+h2{font-size:21px;margin:34px 0 10px}
+.sub{color:var(--mut);margin:0 0 22px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,.12);color:var(--acc2);border:1px solid rgba(52,211,153,.3);padding:4px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.vc-tool{margin:22px 0}
+.vc-drop{border:2px dashed var(--line);border-radius:var(--rad);background:var(--panel);padding:40px 20px;text-align:center;cursor:pointer;transition:.15s}
+.vc-drop.vc-over{border-color:var(--acc);background:#1b2330}
+.vc-drop p{margin:6px 0}
+.vc-hint{font-size:17px}
+.vc-priv{color:var(--mut);font-size:13px}
+#vc-pick{background:var(--acc);color:#fff;border:0;padding:8px 16px;border-radius:8px;font-size:15px;cursor:pointer}
+#vc-input{display:none}
+.vc-list{margin:14px 0;display:flex;flex-direction:column;gap:8px}
+.vc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.vc-name{color:var(--mut);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vc-status{font-size:14px;color:var(--mut);flex:none}
+.vc-err{color:#f87171}
+.vc-dl{background:var(--acc2);color:#06281d;font-weight:600;padding:6px 12px;border-radius:8px}
+.vc-dl:hover{text-decoration:none;opacity:.9}
+.vc-all{margin-top:6px;background:transparent;border:1px solid var(--acc);color:var(--acc);padding:8px 14px;border-radius:8px;cursor:pointer}
+ol.howto{padding-left:20px}
+ol.howto li{margin:6px 0}
+.faq details{border:1px solid var(--line);border-radius:10px;padding:2px 14px;margin:8px 0;background:var(--panel)}
+.faq summary{cursor:pointer;font-weight:600;padding:10px 0}
+.faq p{margin:0 0 12px;color:var(--mut)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:18px 0}
+.tool-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.tool-card:hover{border-color:var(--acc);text-decoration:none}
+.tool-card b{color:var(--text)}
+.tool-card span{display:block;color:var(--mut);font-size:13px;margin-top:4px}
+.related a{display:inline-block;margin:4px 8px 4px 0;background:var(--panel);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:14px}
+footer.site{border-top:1px solid var(--line);margin-top:48px;padding:24px 0;color:var(--mut);font-size:13px}
+footer.site a{color:var(--mut)}
