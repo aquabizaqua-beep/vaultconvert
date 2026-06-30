@@ -1,0 +1,290 @@
+{
+  "site": {
+    "name": "VaultConvert",
+    "tagline": "Free, private file converter that runs entirely in your browser. Your files never leave your device.",
+    "domain": "https://vaultconvert.pages.dev",
+    "noindex": true
+  },
+  "tools": [
+    {
+      "id": "heic-to-jpg",
+      "from": "HEIC",
+      "to": "JPG",
+      "title": "HEIC to JPG",
+      "tier": "A",
+      "engine": "image",
+      "decoder": "heic",
+      "outMime": "image/jpeg",
+      "outExt": "jpg",
+      "quality": 0.92,
+      "accept": ".heic,.heif,image/heic,image/heif",
+      "metaDesc": "Convert HEIC to JPG free, right in your browser. No upload, no watermark, no sign-up \u2014 your photos never leave your device.",
+      "intro": "HEIC is the format the iPhone uses to save photos, and it looks great until you try to open it on Windows, attach it to an email, or upload it somewhere that only accepts JPG. This converter turns HEIC (and HEIF) photos into universally compatible JPG files instantly. Everything happens locally in your browser using your device's own processing power \u2014 your photos are never uploaded to any server, which matters a lot when the files are personal pictures.",
+      "howto": [
+        "Drag your HEIC photos into the box above, or click to choose them.",
+        "VaultConvert decodes each photo in your browser \u2014 nothing is uploaded.",
+        "Download your JPG files individually or all at once."
+      ],
+      "faq": [
+        { "q": "Are my photos uploaded to a server?", "a": "No. The conversion runs entirely in your browser using WebAssembly. Your photos never leave your device, so there is nothing to leak or delete." },
+        { "q": "Will I lose quality converting HEIC to JPG?", "a": "JPG is a lossy format, but we encode at 92% quality, which keeps the result visually identical for almost all photos while staying compatible everywhere." },
+        { "q": "Can I convert many HEIC files at once?", "a": "Yes. Drop as many as you like and download them together. See the batch page for tips on large sets." }
+      ],
+      "related": ["heic-to-png", "png-to-jpg", "webp-to-jpg"],
+      "modifiers": [
+        {
+          "slug": "on-iphone",
+          "label": "on iPhone",
+          "kind": "device",
+          "intro": "Your iPhone saves photos as HEIC to save space, but that format trips up a lot of apps and websites. You don't need an app from the App Store to fix it \u2014 this page works directly in Safari on your iPhone. Open it, pick the photos from your camera roll, and get JPG files you can share anywhere. Because the conversion happens on the phone itself, your personal photos are never sent to a server.",
+          "howto": [
+            "Open this page in Safari on your iPhone.",
+            "Tap the box and choose Photo Library, then select your HEIC photos.",
+            "Tap each converted JPG and use the Share icon to save it back to Photos or send it."
+          ],
+          "faq": [
+            { "q": "Do I need to install an app?", "a": "No. This runs in Safari directly. There is nothing to download from the App Store." },
+            { "q": "Why does my iPhone save photos as HEIC?", "a": "HEIC stores the same quality in roughly half the file size. You can also switch to JPG in Settings > Camera > Formats > Most Compatible." }
+          ]
+        },
+        {
+          "slug": "on-mac",
+          "label": "on Mac",
+          "kind": "device",
+          "intro": "On a Mac you can open HEIC in Preview, but exporting each photo by hand is slow, and you may not want to install a converter app just for this. This page does it in your browser \u2014 Safari, Chrome, or Firefox \u2014 with no app and no upload. Drop a folder of HEIC photos and get JPGs in seconds.",
+          "howto": [
+            "Open this page in your Mac browser.",
+            "Drag HEIC files from Finder straight into the box.",
+            "Download the JPGs to your Downloads folder."
+          ],
+          "faq": [
+            { "q": "Why not just use Preview?", "a": "Preview works for one file at a time. This handles many at once and needs no manual Export step for each photo." }
+          ]
+        },
+        {
+          "slug": "on-windows",
+          "label": "on Windows",
+          "kind": "device",
+          "intro": "Windows can't open HEIC out of the box \u2014 it asks you to buy the HEVC codec from the Microsoft Store. Skip that entirely. This converter decodes HEIC in your browser on any Windows PC, so you get JPG files without paying for a codec or installing software.",
+          "howto": [
+            "Open this page in Edge, Chrome, or Firefox on Windows.",
+            "Drag your HEIC files into the box.",
+            "Download the converted JPGs."
+          ],
+          "faq": [
+            { "q": "Do I need the paid HEVC extension?", "a": "No. Because we decode HEIC in the browser, you don't need any Windows codec or store purchase." }
+          ]
+        },
+        {
+          "slug": "batch",
+          "label": "in batch",
+          "kind": "feature",
+          "intro": "Converting one photo at a time is fine, but most people have a whole camera roll of HEIC files. This page is tuned for batches: drop dozens of HEIC photos at once and download them as a set. Since processing is local, large batches are limited only by your device's memory, not by an upload limit.",
+          "howto": [
+            "Select or drag many HEIC files at once.",
+            "Wait for each to finish \u2014 progress shows per file.",
+            "Use Download all to grab the whole set."
+          ],
+          "faq": [
+            { "q": "Is there a file count limit?", "a": "There is no hard server limit because nothing is uploaded. Very large batches depend on your device's available memory." }
+          ]
+        },
+        {
+          "slug": "without-losing-quality",
+          "label": "without losing quality",
+          "kind": "feature",
+          "intro": "JPG is a lossy format, so a careless converter can soften details or add artifacts. This page encodes at high quality (92%) and preserves the full resolution of your HEIC photo, so the JPG looks visually identical at normal viewing sizes. If you need a perfectly lossless result, convert to PNG instead.",
+          "howto": [
+            "Drop your HEIC photo into the box.",
+            "We keep full resolution and encode at high JPG quality.",
+            "Download the JPG \u2014 compare it side by side with the original."
+          ],
+          "faq": [
+            { "q": "Is JPG ever truly lossless?", "a": "No, JPG always discards some data. For a lossless copy choose HEIC to PNG instead, at the cost of a larger file." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heic-to-png",
+      "from": "HEIC",
+      "to": "PNG",
+      "title": "HEIC to PNG",
+      "tier": "A",
+      "engine": "image",
+      "decoder": "heic",
+      "outMime": "image/png",
+      "outExt": "png",
+      "accept": ".heic,.heif,image/heic,image/heif",
+      "metaDesc": "Convert HEIC to PNG free in your browser. Lossless output, no upload, no watermark.",
+      "intro": "PNG is a lossless format, so converting HEIC to PNG keeps every pixel of your original photo intact \u2014 useful for editing, screenshots, or images with sharp edges and text. As with all VaultConvert tools, the conversion runs entirely in your browser and your photos are never uploaded.",
+      "howto": [
+        "Drag your HEIC photos into the box above.",
+        "Each photo is decoded locally and re-encoded as lossless PNG.",
+        "Download your PNG files."
+      ],
+      "faq": [
+        { "q": "Why choose PNG over JPG?", "a": "PNG is lossless and supports transparency, so it is better for editing or graphics. JPG is smaller and better for sharing photos." },
+        { "q": "Are PNG files larger?", "a": "Usually yes \u2014 lossless compression means bigger files than JPG, especially for photographs." }
+      ],
+      "related": ["heic-to-jpg", "jpg-to-png"]
+    },
+    {
+      "id": "webp-to-png",
+      "from": "WEBP",
+      "to": "PNG",
+      "title": "WebP to PNG",
+      "tier": "A",
+      "engine": "image",
+      "outMime": "image/png",
+      "outExt": "png",
+      "accept": ".webp,image/webp",
+      "metaDesc": "Convert WebP to PNG free in your browser. No upload, no watermark, keeps transparency.",
+      "intro": "You downloaded an image and it came as a WebP file that your editor or an old app refuses to open. This converter turns WebP into a universally supported PNG while preserving transparency. It runs in your browser \u2014 the image is never uploaded anywhere.",
+      "howto": [
+        "Drag your WebP images into the box above.",
+        "Each image is decoded by your browser and saved as PNG.",
+        "Download the PNG files."
+      ],
+      "faq": [
+        { "q": "Does this keep transparency?", "a": "Yes. PNG supports an alpha channel, so transparent areas in the WebP are preserved." },
+        { "q": "Why was my image a WebP?", "a": "Many sites serve WebP because it is smaller. Saving it locally keeps the WebP format, which some programs can't open." }
+      ],
+      "related": ["webp-to-jpg", "png-to-jpg"]
+    },
+    {
+      "id": "webp-to-jpg",
+      "from": "WEBP",
+      "to": "JPG",
+      "title": "WebP to JPG",
+      "tier": "A",
+      "engine": "image",
+      "outMime": "image/jpeg",
+      "outExt": "jpg",
+      "quality": 0.92,
+      "flatten": "#ffffff",
+      "accept": ".webp,image/webp",
+      "metaDesc": "Convert WebP to JPG free in your browser. No upload, no watermark.",
+      "intro": "Need a plain JPG from a WebP image? This converter re-encodes WebP as JPG in your browser, flattening any transparency onto a white background so the result opens everywhere. Nothing is uploaded \u2014 the whole process is local.",
+      "howto": [
+        "Drag your WebP images into the box above.",
+        "Transparent areas are flattened to white and saved as JPG.",
+        "Download the JPG files."
+      ],
+      "faq": [
+        { "q": "What happens to transparency?", "a": "JPG has no transparency, so transparent pixels become white. If you need transparency, convert to PNG instead." }
+      ],
+      "related": ["webp-to-png", "png-to-jpg"]
+    },
+    {
+      "id": "png-to-jpg",
+      "from": "PNG",
+      "to": "JPG",
+      "title": "PNG to JPG",
+      "tier": "A",
+      "engine": "image",
+      "outMime": "image/jpeg",
+      "outExt": "jpg",
+      "quality": 0.92,
+      "flatten": "#ffffff",
+      "accept": ".png,image/png",
+      "metaDesc": "Convert PNG to JPG free in your browser. Smaller files, no upload, no watermark.",
+      "intro": "PNG files can be large, especially for photos. Converting PNG to JPG shrinks the file size dramatically while keeping the image looking great \u2014 ideal for email, web pages, and sharing. Conversion happens in your browser, so your images stay private.",
+      "howto": [
+        "Drag your PNG images into the box above.",
+        "Each is re-encoded as a compact JPG (transparency flattened to white).",
+        "Download the JPG files."
+      ],
+      "faq": [
+        { "q": "Why convert PNG to JPG?", "a": "JPG files are much smaller for photographs, which makes them faster to send and upload." }
+      ],
+      "related": ["jpg-to-png", "webp-to-jpg"],
+      "modifiers": [
+        {
+          "slug": "without-losing-quality",
+          "label": "without losing quality",
+          "kind": "feature",
+          "intro": "This page encodes JPG at high quality (92%) and keeps the original resolution, so the visual difference from your PNG is negligible while the file gets much smaller. For photos this is the sweet spot between size and quality.",
+          "howto": [
+            "Drop your PNG into the box.",
+            "We keep full resolution and use a high quality setting.",
+            "Download and compare \u2014 it should look identical at normal sizes."
+          ],
+          "faq": [
+            { "q": "Can JPG match PNG exactly?", "a": "Not pixel-for-pixel \u2014 JPG is lossy. But at 92% quality the difference is invisible to the eye for most images." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jpg-to-png",
+      "from": "JPG",
+      "to": "PNG",
+      "title": "JPG to PNG",
+      "tier": "A",
+      "engine": "image",
+      "outMime": "image/png",
+      "outExt": "png",
+      "accept": ".jpg,.jpeg,image/jpeg",
+      "metaDesc": "Convert JPG to PNG free in your browser. Lossless PNG output, no upload, no watermark.",
+      "intro": "Converting JPG to PNG gives you a lossless copy that won't degrade further when you edit and re-save it, and PNG is the right choice when you need a format that supports transparency. The conversion is done in your browser \u2014 your images are never uploaded.",
+      "howto": [
+        "Drag your JPG images into the box above.",
+        "Each is re-encoded as a lossless PNG.",
+        "Download the PNG files."
+      ],
+      "faq": [
+        { "q": "Does converting to PNG add transparency?", "a": "No \u2014 a JPG has no transparency to begin with. PNG simply gives you a lossless container and the option to add transparency later in an editor." }
+      ],
+      "related": ["png-to-jpg", "heic-to-png"]
+    },
+    {
+      "id": "svg-to-png",
+      "from": "SVG",
+      "to": "PNG",
+      "title": "SVG to PNG",
+      "tier": "A",
+      "engine": "image",
+      "decoder": "svg",
+      "outMime": "image/png",
+      "outExt": "png",
+      "scale": 1,
+      "accept": ".svg,image/svg+xml",
+      "metaDesc": "Convert SVG to PNG free in your browser. Crisp rendering, no upload, no watermark.",
+      "intro": "SVG is a vector format, perfect for logos and icons, but many tools and platforms need a raster PNG instead. Your browser is actually the most accurate SVG renderer there is, so converting in-browser gives a crisp, correct PNG \u2014 with nothing uploaded to a server.",
+      "howto": [
+        "Drag your SVG files into the box above.",
+        "Your browser renders each SVG and exports it as PNG.",
+        "Download the PNG files."
+      ],
+      "faq": [
+        { "q": "What resolution do I get?", "a": "By default the PNG matches the SVG's intrinsic size. See the high-resolution page to export at 2x or 4x." }
+      ],
+      "related": ["png-to-jpg"]
+    },
+    {
+      "id": "avif-to-jpg",
+      "from": "AVIF",
+      "to": "JPG",
+      "title": "AVIF to JPG",
+      "tier": "A",
+      "engine": "image",
+      "outMime": "image/jpeg",
+      "outExt": "jpg",
+      "quality": 0.92,
+      "flatten": "#ffffff",
+      "accept": ".avif,image/avif",
+      "metaDesc": "Convert AVIF to JPG free in your browser. No upload, no watermark.",
+      "intro": "AVIF is a modern, highly efficient image format, but plenty of apps still can't open it. This converter turns AVIF into a universally compatible JPG using your browser's built-in AVIF decoder \u2014 locally, with no upload.",
+      "howto": [
+        "Drag your AVIF images into the box above.",
+        "Each is decoded by your browser and saved as JPG.",
+        "Download the JPG files."
+      ],
+      "faq": [
+        { "q": "Why can't I open AVIF files?", "a": "AVIF is new, so older software hasn't added support yet. Converting to JPG fixes compatibility everywhere." }
+      ],
+      "related": ["webp-to-jpg", "png-to-jpg"]
+    }
+  ]
+}
