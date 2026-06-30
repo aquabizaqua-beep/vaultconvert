@@ -5,7 +5,9 @@
   var input = document.getElementById('vc-input');
   var pick = document.getElementById('vc-pick');
   var list = document.getElementById('vc-list');
+  var controls = document.getElementById('vc-controls');
   var allBtn = document.getElementById('vc-all');
+  var clearBtn = document.getElementById('vc-clear');
   if (!drop || !input) return;
 
   var results = [];
@@ -34,7 +36,15 @@
     return i > 0 ? name.slice(0, i) : name;
   }
 
-  async function decodeToCanvas(file) {
+  function savings(orig, out) {
+    if (!orig) return '';
+    var pct = Math.round((1 - out / orig) * 100);
+    if (pct > 0) return ' <b class="vc-down">\u2212' + pct + '%</b>';
+    if (pct < 0) return ' <b class="vc-up">+' + (-pct) + '%</b>';
+    return ' <b>same size</b>';
+  }
+
+  async function decodeToCanvas(file, onNote) {
     var canvas = document.createElement('canvas');
     var ctx;
     if (cfg.decoder === 'svg') {
@@ -57,7 +67,9 @@
 
     var sourceBlob = file;
     if (cfg.decoder === 'heic') {
+      if (onNote) onNote('Loading HEIC decoder (first time only)\u2026');
       var heic2any = await loadHeic();
+      if (onNote) onNote('Converting\u2026');
       var converted = await heic2any({
         blob: file,
         toType: cfg.outMime === 'image/png' ? 'image/png' : 'image/jpeg',
@@ -81,46 +93,64 @@
     });
   }
 
-  function addRow(file) {
+  function makeRow(file) {
     var row = document.createElement('div');
     row.className = 'vc-row';
-    row.innerHTML = '<span class="vc-name"></span><span class="vc-status">working\u2026</span>';
+    row.innerHTML =
+      '<img class="vc-thumb" alt="" hidden>' +
+      '<div class="vc-info">' +
+        '<span class="vc-name"></span>' +
+        '<span class="vc-meta">Queued\u2026</span>' +
+        '<div class="vc-bar"><i></i></div>' +
+      '</div>' +
+      '<div class="vc-action"></div>';
     row.querySelector('.vc-name').textContent = file.name;
     list.appendChild(row);
     return row;
   }
 
+  function showControls() {
+    if (controls && results.length >= 1) controls.hidden = false;
+  }
+
   async function handleFile(file) {
-    var row = addRow(file);
-    var status = row.querySelector('.vc-status');
+    var row = makeRow(file);
+    var meta = row.querySelector('.vc-meta');
+    var bar = row.querySelector('.vc-bar');
+    var action = row.querySelector('.vc-action');
+    var thumb = row.querySelector('.vc-thumb');
     try {
-      var canvas = await decodeToCanvas(file);
+      meta.textContent = 'Converting\u2026';
+      var canvas = await decodeToCanvas(file, function (note) { meta.textContent = note; });
       var blob = await canvasToBlob(canvas);
       if (!blob) throw new Error('Encoding failed.');
       var outName = baseName(file.name) + '.' + cfg.outExt;
       var url = URL.createObjectURL(blob);
       results.push({ name: outName, url: url });
-      status.innerHTML = '';
+      bar.style.display = 'none';
+      thumb.src = url; thumb.hidden = false;
+      meta.innerHTML = fmtBytes(file.size) + ' \u2192 ' + fmtBytes(blob.size) + savings(file.size, blob.size) +
+        ' \u00b7 ' + canvas.width + '\u00d7' + canvas.height + ' px';
       var a = document.createElement('a');
-      a.href = url;
-      a.download = outName;
-      a.className = 'vc-dl';
-      a.textContent = 'Download ' + cfg.outExt.toUpperCase() + ' (' + fmtBytes(blob.size) + ')';
-      status.appendChild(a);
-      if (results.length > 1 && allBtn) allBtn.hidden = false;
+      a.href = url; a.download = outName; a.className = 'vc-dl';
+      a.textContent = 'Download ' + cfg.outExt.toUpperCase();
+      action.appendChild(a);
+      showControls();
     } catch (e) {
-      status.className = 'vc-status vc-err';
-      status.textContent = (e && e.message) ? e.message : 'Conversion failed.';
+      bar.style.display = 'none';
+      meta.className = 'vc-meta vc-err';
+      meta.textContent = (e && e.message) ? e.message : 'Conversion failed.';
     }
   }
 
   function handleFiles(files) {
-    var arr = Array.prototype.slice.call(files);
-    arr.forEach(function (f) { handleFile(f); });
+    Array.prototype.slice.call(files).forEach(function (f) { handleFile(f); });
   }
 
   if (pick) pick.addEventListener('click', function (e) { e.preventDefault(); input.click(); });
-  drop.addEventListener('click', function (e) { if (e.target === drop || e.target.classList.contains('vc-hint')) input.click(); });
+  drop.addEventListener('click', function (e) {
+    if (e.target === drop || e.target.classList.contains('vc-hint') || e.target.classList.contains('vc-priv')) input.click();
+  });
   input.addEventListener('change', function () { handleFiles(input.files); });
   ['dragenter', 'dragover'].forEach(function (ev) {
     drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('vc-over'); });
@@ -140,5 +170,13 @@
         document.body.appendChild(a); a.click(); a.remove();
       }, i * 250);
     });
+  });
+
+  if (clearBtn) clearBtn.addEventListener('click', function () {
+    results.forEach(function (r) { URL.revokeObjectURL(r.url); });
+    results = [];
+    list.innerHTML = '';
+    if (controls) controls.hidden = true;
+    input.value = '';
   });
 })();
