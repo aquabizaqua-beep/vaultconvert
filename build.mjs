@@ -38,7 +38,10 @@ function widget(p) {
     '    <p class="vc-priv">\uD83D\uDD12 Converted in your browser. Nothing is uploaded.</p>',
     '  </div>',
     '  <div id="vc-list" class="vc-list"></div>',
-    '  <button id="vc-all" class="vc-all" hidden>Download all</button>',
+    '  <div id="vc-controls" class="vc-controls" hidden>',
+    '    <button id="vc-all" class="vc-all">Download all</button>',
+    '    <button id="vc-clear" class="vc-clear">Clear</button>',
+    '  </div>',
     '</div>',
     '<script>window.__VC__=' + JSON.stringify(vc) + ';</script>',
     '<script src="/engine.js" defer></script>'
