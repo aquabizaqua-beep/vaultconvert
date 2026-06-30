@@ -127,7 +127,37 @@
         { "q": "Why choose PNG over JPG?", "a": "PNG is lossless and supports transparency, so it is better for editing or graphics. JPG is smaller and better for sharing photos." },
         { "q": "Are PNG files larger?", "a": "Usually yes \u2014 lossless compression means bigger files than JPG, especially for photographs." }
       ],
-      "related": ["heic-to-jpg", "jpg-to-png"]
+      "related": ["heic-to-jpg", "jpg-to-png"],
+      "modifiers": [
+        {
+          "slug": "on-iphone",
+          "label": "on iPhone",
+          "kind": "device",
+          "intro": "If you want to edit, annotate, or crop an iPhone photo without losing any quality, PNG is the format to use because it is lossless. iPhones capture in HEIC, and this page turns those photos into lossless PNGs right inside Safari on your phone \u2014 no App Store download and no upload. Your photos are processed on the device itself.",
+          "howto": [
+            "Open this page in Safari on your iPhone.",
+            "Tap the box, choose Photo Library, and pick your HEIC photos.",
+            "Tap each PNG and use the Share icon to save it to Photos or Files."
+          ],
+          "faq": [
+            { "q": "Why pick PNG instead of JPG on my iPhone?", "a": "PNG keeps every pixel with no compression loss, which is better for editing or marking up a photo. The trade-off is a larger file than JPG." }
+          ]
+        },
+        {
+          "slug": "on-windows",
+          "label": "on Windows",
+          "kind": "device",
+          "intro": "Windows can't open HEIC unless you buy the HEVC codec from the Microsoft Store, and even then editing is awkward. Converting HEIC to lossless PNG lets you open and edit the photo in Paint, Photoshop, or any Windows app with full quality. This runs in your browser on any Windows PC \u2014 no codec purchase, no software install, no upload.",
+          "howto": [
+            "Open this page in Edge, Chrome, or Firefox on Windows.",
+            "Drag your HEIC files into the box.",
+            "Download the lossless PNG files."
+          ],
+          "faq": [
+            { "q": "Do I need the paid HEVC extension?", "a": "No. The HEIC is decoded in your browser, so you don't need any Windows codec or Store purchase." }
+          ]
+        }
+      ]
     },
     {
       "id": "webp-to-png",
@@ -150,7 +180,24 @@
         { "q": "Does this keep transparency?", "a": "Yes. PNG supports an alpha channel, so transparent areas in the WebP are preserved." },
         { "q": "Why was my image a WebP?", "a": "Many sites serve WebP because it is smaller. Saving it locally keeps the WebP format, which some programs can't open." }
       ],
-      "related": ["webp-to-jpg", "png-to-jpg"]
+      "related": ["webp-to-jpg", "png-to-jpg"],
+      "modifiers": [
+        {
+          "slug": "transparent-background",
+          "label": "with transparent background",
+          "kind": "feature",
+          "intro": "The main reason to convert WebP to PNG instead of JPG is transparency. Logos, stickers, and product cut-outs often have see-through areas that JPG would replace with an ugly white box. This page preserves the full alpha channel, so transparent stays transparent in the PNG. As always, the image is converted in your browser and never uploaded.",
+          "howto": [
+            "Drag your WebP image into the box above.",
+            "The alpha channel is preserved exactly \u2014 nothing is flattened.",
+            "Download the PNG, then drop it onto a colored background to confirm transparency survived."
+          ],
+          "faq": [
+            { "q": "How do I check the transparency was kept?", "a": "Open the PNG over a colored background, for example in a slide or editor. Transparent areas should show the background through them." },
+            { "q": "What if my WebP has no transparency?", "a": "Then you simply get a normal opaque PNG \u2014 nothing breaks." }
+          ]
+        }
+      ]
     },
     {
       "id": "webp-to-jpg",
@@ -260,7 +307,41 @@
       "faq": [
         { "q": "What resolution do I get?", "a": "By default the PNG matches the SVG's intrinsic size. See the high-resolution page to export at 2x or 4x." }
       ],
-      "related": ["png-to-jpg"]
+      "related": ["png-to-jpg"],
+      "modifiers": [
+        {
+          "slug": "high-resolution",
+          "label": "in high resolution",
+          "kind": "feature",
+          "scale": 4,
+          "intro": "An SVG is infinitely scalable, but the PNG you export from it is not \u2014 so the export resolution matters. This page renders your SVG at 4x its native size, producing a crisp, high-resolution PNG that stays sharp on retina screens, in print, as an app icon, or as a large thumbnail. The rendering is done by your own browser, locally.",
+          "howto": [
+            "Drag your SVG files into the box above.",
+            "Each SVG is rendered at 4x its intrinsic size.",
+            "Download the high-resolution PNG."
+          ],
+          "faq": [
+            { "q": "How large will the PNG be?", "a": "Four times the width and height of the SVG's intrinsic size, so a 256px icon becomes a 1024px PNG." },
+            { "q": "Why not just open the SVG larger?", "a": "Many platforms only accept raster images. Rendering at 4x keeps the result sharp where a 1x export would look soft when enlarged." }
+          ]
+        },
+        {
+          "slug": "with-white-background",
+          "label": "with white background",
+          "kind": "feature",
+          "flatten": "#ffffff",
+          "intro": "SVGs are usually transparent, so a normal SVG to PNG export has a see-through background \u2014 which looks wrong on a white document or breaks if you later save it as JPG. This page renders your SVG onto a solid white background, giving you a PNG with no transparency that drops cleanly into documents, slides, and print. Everything happens in your browser.",
+          "howto": [
+            "Drag your SVG files into the box above.",
+            "Each SVG is rendered on a solid white background.",
+            "Download the PNG \u2014 no transparency, ready for documents."
+          ],
+          "faq": [
+            { "q": "Can I get a transparent PNG instead?", "a": "Yes \u2014 use the standard SVG to PNG page, which keeps the transparent background." },
+            { "q": "Why white specifically?", "a": "White matches most documents, slides, and printed pages, so the image blends in without an odd colored box." }
+          ]
+        }
+      ]
     },
     {
       "id": "avif-to-jpg",
@@ -284,7 +365,24 @@
       "faq": [
         { "q": "Why can't I open AVIF files?", "a": "AVIF is new, so older software hasn't added support yet. Converting to JPG fixes compatibility everywhere." }
       ],
-      "related": ["webp-to-jpg", "png-to-jpg"]
+      "related": ["webp-to-jpg", "png-to-jpg"],
+      "modifiers": [
+        {
+          "slug": "on-android",
+          "label": "on Android",
+          "kind": "device",
+          "intro": "Chrome on Android often saves images as AVIF, and then your gallery, a messenger, or a photo editor refuses to open them. This page converts AVIF to a universally compatible JPG right inside your Android browser, so the image works everywhere you want to use it \u2014 with nothing uploaded to a server.",
+          "howto": [
+            "Open this page in Chrome on your Android phone.",
+            "Tap the box and choose the AVIF file from Files or Downloads.",
+            "Download the JPG \u2014 it saves to your Downloads folder."
+          ],
+          "faq": [
+            { "q": "Why did my download arrive as AVIF?", "a": "Many sites serve AVIF to Chrome because it is smaller and faster. Saving it keeps that format, which older apps can't open." },
+            { "q": "Do I need to install an app?", "a": "No. The conversion runs in your Android browser." }
+          ]
+        }
+      ]
     }
   ]
 }
