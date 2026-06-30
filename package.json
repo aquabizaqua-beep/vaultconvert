@@ -1,0 +1,10 @@
+{
+  "name": "vaultconvert",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Private, in-browser file converters. No upload.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
